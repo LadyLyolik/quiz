@@ -6,6 +6,8 @@ function Question({ dataAPI }) {
   const [qurrentQuestions, setQurrentQuestions] = useState(0); //индекс элемента массива
   const [gameEnd, setGameEnd] = useState(false); 
   const [score, setScore] = useState(0);
+  const [gameTime, setGameTime] = useState(0);
+
 
 
   const handleAnswersClick = (answer) => {
@@ -27,12 +29,17 @@ function Question({ dataAPI }) {
     return <div>No questions available</div>;
   }
 
+  const updateGameTime = (time) => {
+    setGameTime(time);
+  };
+
   return (
     <div className="game">
       {gameEnd ? (
         <div className="results">
           <h1>Игра окончена</h1>
           <p>Ваш счёт: {score}/{dataAPI.length}</p>
+          <p>Время прохождения: {gameTime} секунд</p>
         </div>
       ) : 
         <>
@@ -53,7 +60,7 @@ function Question({ dataAPI }) {
               </button>
             ))}
           </div>
-          <Timer initialTime={30} timerStop={setGameEnd}/>
+          <Timer initialTime={30} timerStop={setGameEnd} updateGameTime={updateGameTime}/>
         </>
       }
     </div>

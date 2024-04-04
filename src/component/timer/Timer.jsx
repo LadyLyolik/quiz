@@ -15,6 +15,7 @@ function Timer(props) {
                 props.timerStop(true)
                 return 0;
             } else{
+                props.updateGameTime(props.initialTime - prevTime);
                 return prevTime-1;
             }
         });  //будет вызываться каждую секунду //каждые 1000мс, то биш каждую секунду, timeLeft уменьшается на одну
