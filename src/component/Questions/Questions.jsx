@@ -53,7 +53,7 @@ function Question({ dataAPI }) {
               </button>
             ))}
           </div>
-          <Timer initialTime={20} timerStop={setGameEnd}/>
+          <Timer initialTime={25} timerStop={setGameEnd}/>
         </>
       }
     </div>
