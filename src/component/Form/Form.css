@@ -2,12 +2,13 @@
     background-color:  #285361;
     color:  #eec597;
     width: 600px;
-    height: 700px;
+    min-height: 400px;
+  height: min-content;
     margin: auto;
     border-radius: 60px;
     display: flex;
-    font-size: 18px;    
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;  
+    padding: 20px;  
 }
 
 .options-choose {

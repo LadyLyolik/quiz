@@ -1,0 +1,42 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .question {
+    flex: 1; /* Занимает 50% высоты */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Цвет фона вопроса */
+  }
+  
+  .answers-list {
+    flex: 1; /* Занимает 50% высоты */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0; /* Цвет фона ответов */
+  }
+  
+  button.handleAnswersClick {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Цвет фона кнопок */
+    color: white;
+    cursor: pointer;
+  }
+  
+  button.handleAnswersClick:hover {
+    background-color: #0056b3; /* Цвет фона кнопок при наведении */
+  }
+  
+  .results {
+    text-align: center;
+  }
+  

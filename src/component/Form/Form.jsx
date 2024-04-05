@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import "./Form.css";
 import Question from "../Questions/Questions";
 
@@ -9,17 +9,22 @@ function QuizForm() {
   const [dataAPI, setDataAPI] = useState(null);
   const [questionBlock, setQuestionBlock] = useState(false);
 
-  fetch("https://opentdb.com/api_category.php")
+  const amountValue = 30
+
+  useEffect(()=>{
+
+    fetch("https://opentdb.com/api_category.php")
       .then((response) => response.json())
       .then((response) => {
         setSettings(response.trivia_categories);
       });
+    }, []);
 
   const levelData = ["easy", "medium", "hard"];
 
   const handleStart = () => {
     fetch(
-      `https://opentdb.com/api.php?amount=5&category=${categoryValue}&difficulty=${levelValue}`
+      `https://opentdb.com/api.php?amount=${amountValue}&category=${categoryValue}&difficulty=${levelValue}&type=multiple`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -34,10 +39,9 @@ function QuizForm() {
   return (
     <div className="quizz-body">
       {questionBlock ? (
-        <Question dataAPI={dataAPI} />
+        <Question dataAPI={dataAPI} amountValue={amountValue}/>
       ) : (
         <div className="options-choose">
-          <p>Квиз-игра - превосходный шанс проверить свои знания</p>
           <div className="category-choose">
             <label htmlFor="category-select">Category:</label>
             {/* categoryValue - будет содержать значение выбранной категории вопросов, так как при нажатии срабатывает событие setCategoryValue и в categoryValue передаётся значение выбранной категории */}

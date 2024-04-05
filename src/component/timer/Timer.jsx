@@ -5,10 +5,10 @@ function Timer(props) {
     const [timeLeft, setTimeLeft] = useState(props.initialTime); //initialTime  - время, которое даётся игроку
     //const [timeOver, setTimeOver] = useState(false)
 
-    var timer;
+    //var timer;
   
     useEffect(() => {
-       timer = setInterval(() => {
+       const timer = setInterval(() => {
         setTimeLeft((prevTime) => {
             if (prevTime === 0){
                 clearInterval(timer);
@@ -27,7 +27,7 @@ function Timer(props) {
   
   
     return (
-        <div>
+        <div className="time-block">
             <div>
              <p>Time Left: {timeLeft}</p>
             </div>
