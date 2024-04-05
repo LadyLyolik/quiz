@@ -67,6 +67,7 @@ function QuizForm() {
               onChange={(t) => setLevelValue(t.target.value)}
             >
               {/* <option className="selected">Choose level</option> */}
+              
               {levelData.map((level) => (
                 <option value={level.id} key={level.id}>
                   {level}

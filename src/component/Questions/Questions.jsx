@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Questions.css";
 import Timer from "../timer/Timer";
+import {decode} from 'html-entities';
 // import { Html5Entities } from 'html-entities';
 
 function Question({ dataAPI, amountValue }) {
@@ -27,10 +28,9 @@ function Question({ dataAPI, amountValue }) {
     return <div className="no-questions">No questions available</div>;
   } 
 
-  // const decodeText = (text) => {
-  //   const entities = new Html5Entities();
-  //   return entities.decode(text);
-  // };
+  const decodeText = (text) => {
+    return decode(text);
+  };
 
   const updateGameTime = (time) => {
     setGameTime(time);
@@ -40,14 +40,11 @@ function Question({ dataAPI, amountValue }) {
     <div className="game">
       {gameEnd ? (
         <div className="results">
-          {/* <div className="results-cont"> */}
           <h1>Игра окончена</h1>
           <p>
             Ваш счёт: {score}/{dataAPI.length}
           </p>
           <p>Время прохождения: {gameTime} секунд</p>
-
-          {/* </div> */}
         </div>
       ) : (
         <div className="game-conteiner">
@@ -57,7 +54,7 @@ function Question({ dataAPI, amountValue }) {
               <div className="question-count">
                 <h2>Question {qurrentQuestions+1}/{amountValue}</h2>
               </div>
-              <p id="text_ti">{dataAPI[qurrentQuestions].question}</p>
+              <p id="text_ti">{decodeText(dataAPI[qurrentQuestions].question)}</p>
             </div>
             <div className="answers-list">
               {[
@@ -69,7 +66,7 @@ function Question({ dataAPI, amountValue }) {
                   key={answer}
                   onClick={() => handleAnswersClick(answer)}
                 >
-                  {answer}
+                  {decodeText(answer)}
                 </button>
               ))}
             </div>
